@@ -1,9 +1,7 @@
 import { expect, test } from '@playwright/test'
 import { StatusCodes } from 'http-status-codes'
 
-/* =========================
-   GET – Get Order Details
-   ========================= */
+// GET – Get Order Details
 
 test('GET order with valid ID (1–10) should return 200', async ({ request }) => {
   const response = await request.get(
@@ -39,9 +37,7 @@ test('GET test order time without headers should return 400', async ({ request }
   expect(response.status()).toBe(StatusCodes.BAD_REQUEST)
 })
 
-/* =========================
-   POST – Create Order
-   ========================= */
+// POST – Create Order
 
 test('POST order with valid data should return 200', async ({ request }) => {
   const response = await request.post(
@@ -78,9 +74,7 @@ test('POST order with invalid data should return 400', async ({ request }) => {
   expect(response.status()).toBe(StatusCodes.BAD_REQUEST)
 })
 
-/* =========================
-   PUT – Update Existing Order
-   ========================= */
+//PUT – Update Existing Order
 
 test('PUT update order with valid ID and valid API key should return 200', async ({ request }) => {
   const response = await request.put(
@@ -145,9 +139,7 @@ test('PUT update order with invalid ID should return client error', async ({ req
   )
 })
 
-/* =========================
-   DELETE – Delete Order
-   ========================= */
+//DELETE – Delete Order
 
 test('DELETE order without API key should return client error', async ({ request }) => {
   const response = await request.delete(
