@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7cccd0dc-4c4b-49a4-91c1-32e2fc61ad16" name="Changes" comment="workspace.xml">
-      <change afterPath="$PROJECT_DIR$/tests/api/auth-flow.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/api/dto-test.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/dto/LoginDto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/dto/OrderDTO.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/test.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/test.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/playwright.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/playwright.config.ts" afterDir="false" />
-    </list>
+    <list default="true" id="7cccd0dc-4c4b-49a4-91c1-32e2fc61ad16" name="Changes" comment="Created authentication DTO flow and added secrets" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -176,7 +167,7 @@
       <workItem from="1767806714173" duration="8947000" />
       <workItem from="1768241053584" duration="4366000" />
       <workItem from="1768276729210" duration="10982000" />
-      <workItem from="1768542610554" duration="1114000" />
+      <workItem from="1768542610554" duration="1541000" />
     </task>
     <task id="LOCAL-00001" summary="added api test cases">
       <option name="closed" value="true" />
@@ -186,7 +177,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768239539650</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Created authentication DTO flow and added secrets">
+      <option name="closed" value="true" />
+      <created>1768543912254</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1768543912254</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,6 +204,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added api test cases" />
-    <option name="LAST_COMMIT_MESSAGE" value="added api test cases" />
+    <MESSAGE value="Created authentication DTO flow and added secrets" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created authentication DTO flow and added secrets" />
   </component>
 </project>
