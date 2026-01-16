@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7cccd0dc-4c4b-49a4-91c1-32e2fc61ad16" name="Changes" comment="added api test cases" />
+    <list default="true" id="7cccd0dc-4c4b-49a4-91c1-32e2fc61ad16" name="Changes" comment="Created authentication DTO flow and added secrets" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,7 +20,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/api-spec-updates" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -54,15 +54,17 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Node.js.OrderDTO.ts.executor": "Run",
     "Playwright.get order with incorrect id should receive code 400.executor": "Run",
+    "Playwright.should be able to login with correct credentials.executor": "Run",
+    "Playwright.should be able to login with incorrect credentials.executor": "Run",
     "Playwright.simple-solution-api.spec.ts.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "feature/added",
+    "git-widget-placeholder": "feature/lesson11and12",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "C:/Users/OM/WebstormProjects/intro-to-api-testing-playwright",
+    "last_opened_file_path": "C:/Users/OM/WebstormProjects/intro-to-api-testing-playwright/tests",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -75,11 +77,14 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\OM\WebstormProjects\intro-to-api-testing-playwright\tests" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\OM\WebstormProjects\intro-to-api-testing-playwright\tests\api" />
     </key>
   </component>
-  <component name="RunManager" selected="Playwright.simple-solution-api.spec.ts">
+  <component name="RunManager" selected="Playwright.should be able to login with correct credentials">
     <configuration name="get order with incorrect id should receive code 400" type="JavaScriptTestRunnerPlaywright" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <playwright-package value="$PROJECT_DIR$/node_modules/@playwright/test" />
@@ -89,6 +94,30 @@
       <test-file value="$PROJECT_DIR$/tests/simple-solution-api.spec.ts" />
       <test-names>
         <test-name value="get order with incorrect id should receive code 400" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="should be able to login with correct credentials" type="JavaScriptTestRunnerPlaywright" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <playwright-package value="$PROJECT_DIR$/node_modules/@playwright/test" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/tests/api/auth-flow.spec.ts" />
+      <test-names>
+        <test-name value="should be able to login with correct credentials" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="should be able to login with incorrect credentials" type="JavaScriptTestRunnerPlaywright" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <playwright-package value="$PROJECT_DIR$/node_modules/@playwright/test" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/tests/api/auth-flow.spec.ts" />
+      <test-names>
+        <test-name value="should be able to login with incorrect credentials" />
       </test-names>
       <method v="2" />
     </configuration>
@@ -104,8 +133,17 @@
     <configuration name="OrderDTO.ts" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/tests/OrderDTO.ts" typescript-loader="bundled" working-dir="$PROJECT_DIR$/tests">
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Node.js.OrderDTO.ts" />
+      <item itemvalue="Playwright.should be able to login with correct credentials" />
+      <item itemvalue="Playwright.should be able to login with incorrect credentials" />
+      <item itemvalue="Playwright.get order with incorrect id should receive code 400" />
+      <item itemvalue="Playwright.simple-solution-api.spec.ts" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Playwright.should be able to login with correct credentials" />
+        <item itemvalue="Playwright.should be able to login with incorrect credentials" />
         <item itemvalue="Playwright.simple-solution-api.spec.ts" />
         <item itemvalue="Node.js.OrderDTO.ts" />
         <item itemvalue="Playwright.get order with incorrect id should receive code 400" />
@@ -129,6 +167,7 @@
       <workItem from="1767806714173" duration="8947000" />
       <workItem from="1768241053584" duration="4366000" />
       <workItem from="1768276729210" duration="10982000" />
+      <workItem from="1768542610554" duration="1885000" />
     </task>
     <task id="LOCAL-00001" summary="added api test cases">
       <option name="closed" value="true" />
@@ -138,7 +177,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768239539650</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Created authentication DTO flow and added secrets">
+      <option name="closed" value="true" />
+      <created>1768543912254</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1768543912254</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,6 +204,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added api test cases" />
-    <option name="LAST_COMMIT_MESSAGE" value="added api test cases" />
+    <MESSAGE value="Created authentication DTO flow and added secrets" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created authentication DTO flow and added secrets" />
   </component>
 </project>
