@@ -167,22 +167,18 @@ test.describe('Loan Risk Decision API – Checklist Based Tests', () => {
     const response = await request.get(BASE_URL)
 
     // Accept actual backend behavior
-    expect([StatusCodes.METHOD_NOT_ALLOWED, StatusCodes.BAD_REQUEST]).toContain(
-      response.status()
-    )
+    expect([StatusCodes.METHOD_NOT_ALLOWED, StatusCodes.BAD_REQUEST]).toContain(response.status())
   })
 
   test('18. Negative: Incorrect request body structure', async ({ request }) => {
     const invalidBody = {
-      age: 'twenty',        // wrong type
-      income: null,         // invalid value
-      loanAmount: '10000',  // wrong type
+      age: 'twenty', // wrong type
+      income: null, // invalid value
+      loanAmount: '10000', // wrong type
     }
     const response = await request.post(BASE_URL, {
       data: invalidBody,
     })
-    expect([StatusCodes.BAD_REQUEST, StatusCodes.UNPROCESSABLE_ENTITY]).toContain(
-      response.status()
-    )
+    expect([StatusCodes.BAD_REQUEST, StatusCodes.UNPROCESSABLE_ENTITY]).toContain(response.status())
   })
 })
