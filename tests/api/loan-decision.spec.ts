@@ -1,152 +1,150 @@
-import { test, expect } from "@playwright/test";
-import { StatusCodes } from "http-status-codes";
-import { DecisionDTO } from "../dto/DecisionDTO";
+import { test, expect } from '@playwright/test'
+import { StatusCodes } from 'http-status-codes'
+import { DecisionDTO } from '../dto/DecisionDTO'
 
-const BASE_URL = "https://backend.tallinn-learning.ee/api/loan-calc/decision";
+const BASE_URL = 'https://backend.tallinn-learning.ee/api/loan-calc/decision'
 
-test.describe("Loan Risk Decision API – Checklist Based Tests", () => {
-
+test.describe('Loan Risk Decision API – Checklist Based Tests', () => {
   // ---------- COMMON API BEHAVIOR ----------
 
-  test("1. API accepts POST request to loan decision endpoint", async ({ request }) => {
+  test('1. API accepts POST request to loan decision endpoint', async ({ request }) => {
     const response = await request.post(BASE_URL, {
-      data: DecisionDTO.positiveDecisionMediumRisk()
-    });
+      data: DecisionDTO.positiveDecisionMediumRisk(),
+    })
 
-    expect.soft(response.status()).toBe(StatusCodes.OK);
-  });
+    expect.soft(response.status()).toBe(StatusCodes.OK)
+  })
 
-  test("2. Request body is accepted with valid JSON structure", async ({ request }) => {
+  test('2. Request body is accepted with valid JSON structure', async ({ request }) => {
     const response = await request.post(BASE_URL, {
-      data: DecisionDTO.positiveDecisionMediumRisk()
-    });
+      data: DecisionDTO.positiveDecisionMediumRisk(),
+    })
 
-    const body = await response.json();
-    expect.soft(body).toBeDefined();
-  });
+    const body = await response.json()
+    expect.soft(body).toBeDefined()
+  })
 
-  test("3. Response status code is 200", async ({ request }) => {
+  test('3. Response status code is 200', async ({ request }) => {
     const response = await request.post(BASE_URL, {
-      data: DecisionDTO.positiveDecisionMediumRisk()
-    });
+      data: DecisionDTO.positiveDecisionMediumRisk(),
+    })
 
-    expect.soft(response.status()).toBe(StatusCodes.OK);
-  });
+    expect.soft(response.status()).toBe(StatusCodes.OK)
+  })
 
-  test("4. Response contains riskScore field", async ({ request }) => {
+  test('4. Response contains riskScore field', async ({ request }) => {
     const response = await request.post(BASE_URL, {
-      data: DecisionDTO.positiveDecisionMediumRisk()
-    });
+      data: DecisionDTO.positiveDecisionMediumRisk(),
+    })
 
-    const body = await response.json();
-    expect.soft(body.riskScore).toBeDefined();
-  });
+    const body = await response.json()
+    expect.soft(body.riskScore).toBeDefined()
+  })
 
-  test("5. Response contains riskLevel field", async ({ request }) => {
+  test('5. Response contains riskLevel field', async ({ request }) => {
     const response = await request.post(BASE_URL, {
-      data: DecisionDTO.positiveDecisionMediumRisk()
-    });
+      data: DecisionDTO.positiveDecisionMediumRisk(),
+    })
 
-    const body = await response.json();
-    expect.soft(body.riskLevel).toBeDefined();
-  });
+    const body = await response.json()
+    expect.soft(body.riskLevel).toBeDefined()
+  })
 
-  test("6. Response contains riskPeriods field", async ({ request }) => {
+  test('6. Response contains riskPeriods field', async ({ request }) => {
     const response = await request.post(BASE_URL, {
-      data: DecisionDTO.positiveDecisionMediumRisk()
-    });
+      data: DecisionDTO.positiveDecisionMediumRisk(),
+    })
 
-    const body = await response.json();
-    expect.soft(Array.isArray(body.riskPeriods)).toBe(true);
-  });
+    const body = await response.json()
+    expect.soft(Array.isArray(body.riskPeriods)).toBe(true)
+  })
 
-  test("7. Response contains applicationId field", async ({ request }) => {
+  test('7. Response contains applicationId field', async ({ request }) => {
     const response = await request.post(BASE_URL, {
-      data: DecisionDTO.positiveDecisionMediumRisk()
-    });
+      data: DecisionDTO.positiveDecisionMediumRisk(),
+    })
 
-    const body = await response.json();
-    expect.soft(body.applicationId).toBeTruthy();
-  });
+    const body = await response.json()
+    expect.soft(body.applicationId).toBeTruthy()
+  })
 
-  test("8. Response contains riskDecision field", async ({ request }) => {
+  test('8. Response contains riskDecision field', async ({ request }) => {
     const response = await request.post(BASE_URL, {
-      data: DecisionDTO.positiveDecisionMediumRisk()
-    });
+      data: DecisionDTO.positiveDecisionMediumRisk(),
+    })
 
-    const body = await response.json();
-    expect.soft(body.riskDecision).toBeDefined();
-  });
+    const body = await response.json()
+    expect.soft(body.riskDecision).toBeDefined()
+  })
 
   // ---------- NEGATIVE DECISION ----------
 
-  test("9. Negative decision for underage applicant", async ({ request }) => {
+  test('9. Negative decision for underage applicant', async ({ request }) => {
     const response = await request.post(BASE_URL, {
-      data: DecisionDTO.negativeDecision()
-    });
+      data: DecisionDTO.negativeDecision(),
+    })
 
-    const body = await response.json();
-    expect.soft(body.riskDecision).toBe("negative");
-  });
+    const body = await response.json()
+    expect.soft(body.riskDecision).toBe('negative')
+  })
 
-  test("10. Negative decision returns Very High Risk level", async ({ request }) => {
+  test('10. Negative decision returns Very High Risk level', async ({ request }) => {
     const response = await request.post(BASE_URL, {
-      data: DecisionDTO.negativeDecision()
-    });
+      data: DecisionDTO.negativeDecision(),
+    })
 
-    const body = await response.json();
-    expect.soft(body.riskLevel).toBe("Very High Risk");
-  });
+    const body = await response.json()
+    expect.soft(body.riskLevel).toBe('Very High Risk')
+  })
 
-  test("11. Negative decision returns empty riskPeriods", async ({ request }) => {
+  test('11. Negative decision returns empty riskPeriods', async ({ request }) => {
     const response = await request.post(BASE_URL, {
-      data: DecisionDTO.negativeDecision()
-    });
+      data: DecisionDTO.negativeDecision(),
+    })
 
-    const body = await response.json();
-    expect.soft(body.riskPeriods).toHaveLength(0);
-  });
+    const body = await response.json()
+    expect.soft(body.riskPeriods).toHaveLength(0)
+  })
 
   // ---------- POSITIVE – MEDIUM RISK ----------
 
-  test("12. Positive decision with Medium Risk", async ({ request }) => {
+  test('12. Positive decision with Medium Risk', async ({ request }) => {
     const response = await request.post(BASE_URL, {
-      data: DecisionDTO.positiveDecisionMediumRisk()
-    });
+      data: DecisionDTO.positiveDecisionMediumRisk(),
+    })
 
-    const body = await response.json();
-    expect.soft(body.riskDecision).toBe("positive");
-    expect.soft(body.riskLevel).toBe("Medium Risk");
-  });
+    const body = await response.json()
+    expect.soft(body.riskDecision).toBe('positive')
+    expect.soft(body.riskLevel).toBe('Medium Risk')
+  })
 
-  test("13. Medium Risk returns [6, 9, 12] risk periods", async ({ request }) => {
+  test('13. Medium Risk returns [6, 9, 12] risk periods', async ({ request }) => {
     const response = await request.post(BASE_URL, {
-      data: DecisionDTO.positiveDecisionMediumRisk()
-    });
+      data: DecisionDTO.positiveDecisionMediumRisk(),
+    })
 
-    const body = await response.json();
-    expect.soft(body.riskPeriods).toEqual([6, 9, 12]);
-  });
+    const body = await response.json()
+    expect.soft(body.riskPeriods).toEqual([6, 9, 12])
+  })
 
   // ---------- POSITIVE – LOW RISK ----------
 
-  test("14. Positive decision with Low Risk", async ({ request }) => {
+  test('14. Positive decision with Low Risk', async ({ request }) => {
     const response = await request.post(BASE_URL, {
-      data: DecisionDTO.positiveDecisionLowRisk()
-    });
+      data: DecisionDTO.positiveDecisionLowRisk(),
+    })
 
-    const body = await response.json();
-    expect.soft(body.riskDecision).toBe("positive");
-    expect.soft(body.riskLevel).toBe("Low Risk");
-  });
+    const body = await response.json()
+    expect.soft(body.riskDecision).toBe('positive')
+    expect.soft(body.riskLevel).toBe('Low Risk')
+  })
 
-  test("15. Low Risk returns [12, 18, 24, 30, 36] risk periods", async ({ request }) => {
+  test('15. Low Risk returns [12, 18, 24, 30, 36] risk periods', async ({ request }) => {
     const response = await request.post(BASE_URL, {
-      data: DecisionDTO.positiveDecisionLowRisk()
-    });
+      data: DecisionDTO.positiveDecisionLowRisk(),
+    })
 
-    const body = await response.json();
-    expect.soft(body.riskPeriods).toEqual([12, 18, 24, 30, 36]);
-  });
-
-});
+    const body = await response.json()
+    expect.soft(body.riskPeriods).toEqual([12, 18, 24, 30, 36])
+  })
+})
