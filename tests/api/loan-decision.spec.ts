@@ -147,4 +147,42 @@ test.describe('Loan Risk Decision API – Checklist Based Tests', () => {
     const body = await response.json()
     expect.soft(body.riskPeriods).toEqual([12, 18, 24, 30, 36])
   })
+
+  test('16. API accepts POST request and returns valid JWT token', async ({ request }) => {
+    const response = await request.post(BASE_URL, {
+      data: DecisionDTO.positiveDecisionMediumRisk(),
+    })
+    expect.soft(response.status()).toBe(StatusCodes.OK)
+
+    const jwtValue = await response.text()
+
+    // JWT regex pattern
+    const jwtRegex = /^eyJhb[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+$/
+
+    // Verify response with valid JWT
+    expect.soft(jwtValue).toMatch(jwtRegex)
+  })
+
+  test('17. Negative: Incorrect HTTP method (GET instead of POST)', async ({ request }) => {
+    const response = await request.get(BASE_URL)
+
+    // Accept actual backend behavior
+    expect([StatusCodes.METHOD_NOT_ALLOWED, StatusCodes.BAD_REQUEST]).toContain(
+      response.status()
+    )
+  })
+
+  test('18. Negative: Incorrect request body structure', async ({ request }) => {
+    const invalidBody = {
+      age: 'twenty',        // wrong type
+      income: null,         // invalid value
+      loanAmount: '10000',  // wrong type
+    }
+    const response = await request.post(BASE_URL, {
+      data: invalidBody,
+    })
+    expect([StatusCodes.BAD_REQUEST, StatusCodes.UNPROCESSABLE_ENTITY]).toContain(
+      response.status()
+    )
+  })
 })
