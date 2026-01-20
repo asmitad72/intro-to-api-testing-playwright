@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test'
 import { StatusCodes } from 'http-status-codes'
 import { DecisionDTO } from '../dto/DecisionDTO'
+import { LoginDto } from '../dto/LoginDto'
 
 const BASE_URL = 'https://backend.tallinn-learning.ee/api/loan-calc/decision'
 
@@ -149,19 +150,26 @@ test.describe('Loan Risk Decision API – Checklist Based Tests', () => {
   })
 
   test('16. API accepts POST request and returns valid JWT token', async ({ request }) => {
-    const response = await request.post(BASE_URL, {
-      data: DecisionDTO.positiveDecisionMediumRisk(),
-    })
+    const response = await request.post(
+      'https://backend.tallinn-learning.ee/login/student',
+      {
+        data: LoginDto.createLoginWithCorrectData(),
+      }
+    )
+
+    // Status check
     expect.soft(response.status()).toBe(StatusCodes.OK)
 
+    // JWT token is returned as plain text
     const jwtValue = await response.text()
 
     // JWT regex pattern
     const jwtRegex = /^eyJhb[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+$/
 
-    // Verify response with valid JWT
+    // Verify valid JWT
     expect.soft(jwtValue).toMatch(jwtRegex)
   })
+
 
   test('17. Negative: Incorrect HTTP method (GET instead of POST)', async ({ request }) => {
     const response = await request.get(BASE_URL)
