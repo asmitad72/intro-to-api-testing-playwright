@@ -150,12 +150,9 @@ test.describe('Loan Risk Decision API – Checklist Based Tests', () => {
   })
 
   test('16. API accepts POST request and returns valid JWT token', async ({ request }) => {
-    const response = await request.post(
-      'https://backend.tallinn-learning.ee/login/student',
-      {
-        data: LoginDto.createLoginWithCorrectData(),
-      }
-    )
+    const response = await request.post('https://backend.tallinn-learning.ee/login/student', {
+      data: LoginDto.createLoginWithCorrectData(),
+    })
 
     // Status check
     expect.soft(response.status()).toBe(StatusCodes.OK)
@@ -169,7 +166,6 @@ test.describe('Loan Risk Decision API – Checklist Based Tests', () => {
     // Verify valid JWT
     expect.soft(jwtValue).toMatch(jwtRegex)
   })
-
 
   test('17. Negative: Incorrect HTTP method (GET instead of POST)', async ({ request }) => {
     const response = await request.get(BASE_URL)
