@@ -38,3 +38,28 @@ GET / POST / PUT / DELETE all covered.
 | 14 | Delete order with invalid ID | Done |
 
 
+# Loan Risk Decision API – Homework 11
+All API test scenarios created for the Loan Risk Decision service.
+# API Test Checklist 
+
+| No | Scenario Name | Test Data |
+|----|---------------|-----------|
+| 1 | API accepts POST request to loan decision endpoint | `positiveDecisionMediumRisk()` |
+| 2 | Request body is accepted with valid JSON structure | `positiveDecisionMediumRisk()` |
+| 3 | Response status code is 200 OK | `positiveDecisionMediumRisk()` |
+| 4 | Response contains `riskScore` field | `positiveDecisionMediumRisk()` |
+| 5 | Response contains `riskLevel` field | `positiveDecisionMediumRisk()` |
+| 6 | Response contains `riskPeriods` field | `positiveDecisionMediumRisk()` |
+| 7 | Response contains `applicationId` field | `positiveDecisionMediumRisk()` |
+| 8 | Response contains `riskDecision` field | `positiveDecisionMediumRisk()` |
+| 9 | Negative decision for underage applicant | `negativeDecision()` |
+| 10 | Negative decision returns `Very High Risk` | `negativeDecision()` |
+| 11 | Negative decision returns empty `riskPeriods` array | `negativeDecision()` |
+| 12 | Positive decision with Medium Risk | `positiveDecisionMediumRisk()` |
+| 13 | Medium Risk returns `[6, 9, 12]` risk periods | `positiveDecisionMediumRisk()` |
+| 14 | Positive decision with Low Risk | `positiveDecisionLowRisk()` |
+| 15 | Low Risk returns `[12, 18, 24, 30, 36]` risk periods | `positiveDecisionLowRisk()` |
+
+
+
+
