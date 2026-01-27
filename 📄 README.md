@@ -60,6 +60,13 @@ All API test scenarios created for the Loan Risk Decision service.
 | 14 | Positive decision with Low Risk | `positiveDecisionLowRisk()` |
 | 15 | Low Risk returns `[12, 18, 24, 30, 36]` risk periods | `positiveDecisionLowRisk()` |
 
+# API Test Scenarios for homework 12
+
+| No | Scenario | Test Data | Status |
+|----|---------|-----------|--------|
+| 16 | API accepts POST request and returns valid JWT token | Valid loan decision request (Medium Risk) using DecisionDTO | Done |
+| 17 | Negative case: Incorrect HTTP method (GET instead of POST) | No request body (GET request) | Done |
+| 18 | Negative case: Incorrect request body structure | Invalid JSON body with wrong field types | Done |
 
 
 
